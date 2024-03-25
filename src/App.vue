@@ -1,9 +1,6 @@
-<!-- <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script> -->
 
 <template>
-  <h1>-- --- .-. ... .. -.   .- .-. --- ..- -. -..</h1>
+  <h1>-- --- .-. ... .. -. &nbsp; .- .-. --- ..- -. -..</h1>
   <h1>morsin around</h1>
   <input v-model="encoder" placeholder="enter text to encode">
   <p>{{ encode() }}</p>
@@ -13,9 +10,37 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <script setup>
 import { ref } from 'vue'
+import { RouterLink, RouterView } from 'vue-router'
+
+// firebase
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyBSbwvHOhRWeMehPV19Ho_l9uLexdRucL8",
+
+  authDomain: "morse-decoder-d1f42.firebaseapp.com",
+
+  projectId: "morse-decoder-d1f42",
+
+  storageBucket: "morse-decoder-d1f42.appspot.com",
+
+  messagingSenderId: "118073532009",
+
+  appId: "1:118073532009:web:bcc0d9191426019f720cf8",
+
+  measurementId: "G-ZEK1LDVJKJ"
+
+};
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+// morse translator 
 const encoder = ref('')
 const decoder = ref('')
 
+// data
 const abc = {
   "0": "-----",
   "1": ".----",
